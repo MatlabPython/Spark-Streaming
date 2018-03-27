@@ -1,0 +1,1 @@
+spark-submit --master yarn-client --driver-memory 4G --executor-memory 4G --num-executors 3 --executor-cores 2 --class com.gsafety.lifeline.bigdata.streaming.bridge.BridgeStreaming /app/streaming/test/lifelineStreaming-1.0-SNAPSHOT-jar-with-dependencies.jar /app/streaming/conf/bridge1S.properties >> /app/streaming/logs/BridgeStreaming.log 2>&1 &

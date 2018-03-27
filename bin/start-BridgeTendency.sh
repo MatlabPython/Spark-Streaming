@@ -1,0 +1,1 @@
+spark-submit --master yarn-client --driver-memory 4G --num-executors 2 --executor-cores 2 --executor-memory 6G --class com.gsafety.lifeline.bigdata.streaming.bridge.BridgeTendency /app/streaming/test/lifelineStreaming-1.0-SNAPSHOT-jar-with-dependencies.jar /app/streaming/conf/bridge10M.properties >> /app/streaming/logs/BridgeTendency.log 2>&1 &
