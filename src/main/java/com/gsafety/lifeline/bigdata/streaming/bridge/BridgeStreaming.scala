@@ -84,7 +84,7 @@ object BridgeStreaming {
     /**
       * spark conf配置
       */
-    val conf = new SparkConf().setAppName("BridgeStreaming").setMaster("local[2]")
+    val conf = new SparkConf().setAppName("BridgeStreaming20180330")//.setMaster("local[2]")
     //多个job并行运算条件
     conf.set("spark.streaming.concurrentJobs", "4")
     conf.set("spark.scheduler.mode", "FAIR")
@@ -162,6 +162,7 @@ object BridgeStreaming {
         logger.info("------------intoHbase-----------")
       })
     })
+
     //秒采样结果写入Hbase以及Kafka
     result.foreachRDD(rd => {
       rd.foreachPartition(recordPartitions => {
@@ -223,8 +224,15 @@ object BridgeStreaming {
         val secondss = simpleFormats.format(time)
         val md5String = sensor + ternal
         val valueString = ArraytoString(data.values)
-        if (!writeTokafka) {
-          tableNameStr = "BRIDGE" + "_" + ternal
+        if (!writeTokafka  && data.dataType != "S10M") {
+          if(data.dataType == "PV"){
+            tableNameStr = "BRIDGE" + "_" + ternal
+          }else if(data.dataType == "FFT"){
+            tableNameStr = "BRIDGE_FFT"
+          }else{
+            tableNameStr = "BRIDGE_OTHER_DATATYPE"
+          }
+
         } else {
           /**
             * 双写kafka与hbase

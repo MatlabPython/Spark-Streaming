@@ -11,17 +11,30 @@
     </properties>
     <name>lifelineStreaming</name>
     <url>http://maven.apache.org</url>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>cdh</id>-->
+            <!--<name>cdh</name>-->
+            <!--<url>https://repository.cloudera.com/content/repositories/releases/</url>-->
+            <!--<releases>-->
+                <!--<enabled>true</enabled>-->
+            <!--</releases>-->
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
+    <!--</repositories>-->
     <repositories>
         <repository>
-            <id>cdh</id>
-            <name>cdh</name>
-            <url>https://repository.cloudera.com/content/repositories/releases/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
+            <id>cloudera</id>
+            <name></name>
+            <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+        <releases>
+            <enabled>true</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
         </repository>
     </repositories>
     <dependencies>
